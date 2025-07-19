@@ -73,15 +73,3 @@ Route::delete('/task/{id}', function ($id) {
 });
 
 
-// Route::get('/', function () {
-//     Log::info("Get /");
-//     $startTime = microtime(true);
-//     // Simple cache-aside logic
-//     if (Cache::has('tasks')) {
-//         $data = Cache::get('tasks');
-//     } else {
-//         $data = Task::orderBy('created_at', 'asc')->get();
-//         Cache::add('tasks', $data);
-//     }
-//     return view('tasks', ['tasks' => $data, 'elapsed' => microtime(true) - $startTime]);
-// });
