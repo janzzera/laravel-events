@@ -24,15 +24,32 @@ use Illuminate\Support\Facades\Validator;
     */
 Route::get('/', function () {
     Log::info("Get /");
+
     $startTime = microtime(true);
-    // Simple cache-aside logic
-    if (Cache::has('events')) {
-        $data = Cache::get('events');
+
+    $query = Request::get('query'); // GET /?query=...
+
+    if ($query) {
+        // If searching, skip cache
+        $data = Event::where('title', 'like', "%{$query}%")
+            ->orWhere('description', 'like', "%{$query}%")
+            ->orderBy('created_at', 'asc')
+            ->get();
     } else {
-        $data = Event::orderBy('created_at', 'asc')->get();
-        Cache::add('events', $data);
+        // Use cache for non-search view
+        if (Cache::has('events')) {
+            $data = Cache::get('events');
+        } else {
+            $data = Event::orderBy('created_at', 'asc')->get();
+            Cache::add('events', $data);
+        }
     }
-    return view('events', ['events' => $data, 'elapsed' => microtime(true) - $startTime]);
+
+    return view('events', [
+        'events' => $data,
+        'elapsed' => microtime(true) - $startTime,
+        'query' => $query
+    ]);
 });
 
 /**
