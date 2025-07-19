@@ -17,14 +17,14 @@
                             <th>Event Image</th>
                         </thead>
                         <tbody>
-                            @foreach ($tasks as $task)
+                            @foreach ($events as $event)
                                 <tr>
-                                    <td>{{ $task->title }}</td>
-                                    <td>{{ $task->description }}</td>
-                                    <td>{{ $task->date ? $task->date->format('Y-m-d H:i') : 'N/A' }}</td>
+                                    <td>{{ $event->title }}</td>
+                                    <td>{{ $event->description }}</td>
+                                    <td>{{ $event->date ? $event->date->format('Y-m-d H:i') : 'N/A' }}</td>
                                     <td>
-                                        @if ($task->imageurl)
-                                            <img src="{{ asset($task->imageurl) }}" alt="Event Image" style="max-width: 100px; max-height: 100px;">
+                                        @if ($event->imageurl)
+                                            <img src="{{ asset($event->imageurl) }}" alt="Event Image" style="max-width: 100px; max-height: 100px;">
                                         @else
                                             No Image
                                         @endif
