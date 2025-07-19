@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+use App\Models\Event;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -26,13 +26,13 @@ Route::get('/', function () {
     Log::info("Get /");
     $startTime = microtime(true);
     // Simple cache-aside logic
-    if (Cache::has('tasks')) {
-        $data = Cache::get('tasks');
+    if (Cache::has('events')) {
+        $data = Cache::get('events');
     } else {
-        $data = Task::orderBy('created_at', 'asc')->get();
-        Cache::add('tasks', $data);
+        $data = Event::orderBy('created_at', 'asc')->get();
+        Cache::add('events', $data);
     }
-    return view('tasks', ['tasks' => $data, 'elapsed' => microtime(true) - $startTime]);
+    return view('events', ['events' => $data, 'elapsed' => microtime(true) - $startTime]);
 });
 
 /**
@@ -71,3 +71,17 @@ Route::delete('/task/{id}', function ($id) {
 
     return redirect('/');
 });
+
+
+// Route::get('/', function () {
+//     Log::info("Get /");
+//     $startTime = microtime(true);
+//     // Simple cache-aside logic
+//     if (Cache::has('tasks')) {
+//         $data = Cache::get('tasks');
+//     } else {
+//         $data = Task::orderBy('created_at', 'asc')->get();
+//         Cache::add('tasks', $data);
+//     }
+//     return view('tasks', ['tasks' => $data, 'elapsed' => microtime(true) - $startTime]);
+// });
