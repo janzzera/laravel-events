@@ -21,7 +21,8 @@
                                 <tr>
                                     <td>{{ $event->title }}</td>
                                     <td>{{ $event->description }}</td>
-                                    <td>{{ $event->date ? $event->date->format('Y-m-d H:i') : 'N/A' }}</td>
+                                    
+                                    <td>{{ \Carbon\Carbon::parse($task->date)->format('Y-m-d H:i') }}</td>
                                     <td>
                                         @if ($event->imageurl)
                                             <img src="{{ asset($event->imageurl) }}" alt="Event Image" style="max-width: 100px; max-height: 100px;">
