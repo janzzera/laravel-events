@@ -27,7 +27,7 @@ Route::get('/', function () {
 
     $startTime = microtime(true);
 
-    $query = Request::get('query'); // GET /?query=...
+    $query = request()->get('query'); // GET /?query=...
 
     if ($query) {
         // If searching, skip cache
