@@ -16,10 +16,11 @@ class EventFactory extends Factory
      */
     public function definition(): array
     {
+        $images = 'storage/events/hackaton.jpg';
         return [
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(),
-            'imageurl' => $this->faker->imageUrl(640, 480, 'events', true),
+            'imageurl' => $images,
             'date' => $this->faker->dateTimeBetween('-1 month', '+3 months'),
         ];
     }
