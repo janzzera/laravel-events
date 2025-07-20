@@ -21,7 +21,6 @@
             </div>
 
             <div class="container my-4">
-                <h3 class="mb-4">Events List</h3>
 
                 <div class="row g-4 col-9">
                     @foreach ($events as $event)
