@@ -27,7 +27,7 @@
                         <div class="col-12 col-sm-6">
                             <div class="card h-100 shadow-sm">
                                 @if ($event->imageurl)
-                                    <img src="{{ asset($event->imageurl) }}" class="card-img-top" style="height: 200px; width:300px; object-fit: cover;" alt="Event Image">
+                                    <img src="{{ asset($event->imageurl) }}" class="card-img-top rounded-2" style="height: 200px; width:300px; object-fit: cover;" alt="Event Image">
                                 @else
                                     <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
                                         <span class="text-muted">No Image</span>
