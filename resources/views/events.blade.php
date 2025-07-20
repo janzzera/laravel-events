@@ -24,7 +24,7 @@
 
                 <div class="row g-4 col-xl">
                     @foreach ($events as $event)
-                        <div class="col-12 col-sm-6">
+                        <div class="col-7 col-sm-6">
                             <div class="card h-100 shadow-sm">
                                 @if ($event->imageurl)
                                     <img src="{{ asset($event->imageurl) }}" class="card-img-top" style="height: 200px; width:300; object-fit: cover;" alt="Event Image">
