@@ -20,37 +20,33 @@
                 </div>
             </div>
 
-            <!-- Display Events -->
-            <div class="panel panel-default">
-                <div class="panel-heading">Events List</div>
+            <div class="container my-4">
+                <h3 class="mb-4">Events List</h3>
 
-                <div class="panel-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <th>Event Title</th>
-                            <th>Event Description</th>
-                            <th>Event Date</th>
-                            <th>Event Image</th>
-                        </thead>
-                        <tbody>
-                            @foreach ($events as $event)
-                                <tr>
-                                    <td>{{ $event->id }}</td>
-                                    <td>{{ $event->description }} {{$event->imageurl}}</td>
-                                    <td>{{ \Carbon\Carbon::parse($event->date)->format('Y-m-d H:i') }}</td>
-                                    <td>
-                                        @if ($event->imageurl)
-                                            <img src="{{ asset($event->imageurl) }}" alt="Event Image" style="max-width: 100px; max-height: 100px;">
-                                        @else
-                                            No Image
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="row g-4">
+                    @foreach ($events as $event)
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card h-100 shadow-sm">
+                                @if ($event->imageurl)
+                                    <img src="{{ asset($event->imageurl) }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Event Image">
+                                @else
+                                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <span class="text-muted">No Image</span>
+                                    </div>
+                                @endif
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">{{ $event->title }}</h5>
+                                    <p class="card-text text-muted">{{ $event->description }}</p>
+                                    <p class="card-text mt-auto">
+                                        <small class="text-muted">{{ \Carbon\Carbon::parse($event->date)->format('Y-m-d H:i') }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+
 
             <!-- Response Time -->
             <div class="panel panel-default">
