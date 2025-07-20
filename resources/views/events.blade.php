@@ -35,7 +35,7 @@
                         <tbody>
                             @foreach ($events as $event)
                                 <tr>
-                                    <td>{{ $event->title }}</td>
+                                    <td>{{ $event->id }}</td>
                                     <td>{{ $event->description }} {{$event->imageurl}}</td>
                                     <td>{{ \Carbon\Carbon::parse($event->date)->format('Y-m-d H:i') }}</td>
                                     <td>
