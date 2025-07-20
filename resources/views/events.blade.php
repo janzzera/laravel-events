@@ -22,7 +22,7 @@
 
             <div class="container my-4">
 
-                <div class="row g-4 col-9">
+                <div class="row g-4 col-xl">
                     @foreach ($events as $event)
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="card h-100 shadow-sm">
